@@ -1,21 +1,16 @@
 from flask import Flask, render_template, Response, request
 import cv2
-from threading import Thread
 from vision import detect_text
- 
  
 global capture, switch
 capture=0
 switch=1
  
-#instatiate flask app  
 app = Flask(__name__, template_folder='./templates')
- 
  
 camera = cv2.VideoCapture(0)
 
- 
-def gen_frames():  # generate frame by frame from camera
+def gen_frames():  
     global out, capture,rec_frame
     while True:
         success, frame = camera.read()
